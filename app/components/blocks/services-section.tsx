@@ -2,18 +2,29 @@ import { cn } from "@/lib/utils";
 import { ArrowRight, Code2, GitBranch, LineChart, Users } from "lucide-react";
 import Link from "next/link";
 import { FeatureServiceCard } from "./feature-service-card";
+import { useEffect, useRef } from "react";
 
 interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   href: string;
+  delay?: string;
 }
 
-function ServiceCard({ title, description, icon, href }: ServiceCardProps) {
+function ServiceCard({
+  title,
+  description,
+  icon,
+  href,
+  delay = "0",
+}: ServiceCardProps) {
   return (
-    <div className="group relative rounded-lg bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-      <div className="mb-6 w-fit rounded-lg bg-green-50 p-3">
+    <div
+      className="group relative rounded-lg bg-white p-6 shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-lg opacity-0 translate-y-8 animate-in"
+      style={{ animationDelay: delay }}
+    >
+      <div className="mb-6 w-fit rounded-lg bg-secondary p-3">
         <div className="h-8 w-8 text-green-600">{icon}</div>
       </div>
       <h3 className="mb-4 heading-card">{title}</h3>
@@ -90,7 +101,11 @@ export function ServicesSection({ className }: ServicesSectionProps) {
           />
 
           {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
+            <ServiceCard
+              key={index}
+              {...service}
+              delay={`${(index + 1) * 100}ms`}
+            />
           ))}
         </div>
       </div>

@@ -6,7 +6,7 @@
 @layer base {
   :root {
     /* Brand Colors */
-    --background: #faf9f7;
+    --background: #eae8e1;
     --foreground: #1c1917;
     --primary: #1c1917;
     --primary-foreground: #ffffff;
@@ -17,6 +17,11 @@
     --muted: #d1e9db;
     --muted-foreground: #1c1917;
     --border: #e6e6e6;
+
+    /* Card Gradients */
+    --gradient-purple: #eee5ff;
+    --gradient-green: #e7f5ef;
+    --gradient-blue: #e5eeff;
 
     /* Theme Colors */
     --card: #ffffff;

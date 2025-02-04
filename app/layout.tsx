@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getMetadata } from "@/lib/metadata";
 import { satoshi, lora } from "@/config/fonts";
+import Navigation from "@/components/blocks/navigation";
 
 // Import global styles last
 import "./globals.css";
@@ -25,9 +26,8 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="font-sans min-h-screen text-foreground antialiased">
-        <main className="relative flex min-h-screen flex-col">
-          <div className="flex-1">{children}</div>
-        </main>
+        {/* Navigation temporarily hidden */}
+        <main>{children}</main>
       </body>
     </html>
   );

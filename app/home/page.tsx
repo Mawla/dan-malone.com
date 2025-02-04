@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/blocks/hero";
+import { ServicesSection } from "@/components/blocks/services-section";
 
 export const metadata: Metadata = {
   title: "Dan Malone | Fractional CTO",
@@ -17,10 +18,7 @@ export default function HomePage() {
         imageAlt="Dan Malone - Fractional CTO"
       />
 
-      {/* Services Preview Section - Placeholder */}
-      <section className="w-full px-4 py-8 md:px-8 md:py-12 lg:py-16 bg-[#FAF9F7]">
-        {/* Services content will be added here */}
-      </section>
+      <ServicesSection />
 
       {/* Case Studies Preview Section - Placeholder */}
       <section className="w-full px-4 py-8 md:px-8 md:py-12 lg:py-16">
