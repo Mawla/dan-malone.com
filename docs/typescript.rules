@@ -1,0 +1,282 @@
+# dan-malone.com TypeScript Rules
+
+## Memory Management
+
+All TypeScript rules must be considered in the context of the project's memory management system:
+
+1. Working Memory:
+
+   - Active type changes are tracked in `/docs/working-memory/open/{task-id}/`
+   - Type changes must be documented in task plans
+   - Type updates require documentation review
+   - See `/docs/features/portfolio/README.md` for portfolio types
+   - See `/docs/features/services/README.md` for consulting services types
+   - See `/docs/features/blog/README.md` for blog post types
+
+2. Project Memory:
+
+   - Type system architecture is documented in `/docs/technical/types/`
+   - Breaking changes are tracked in `/docs/changes/types/`
+   - Type patterns are recorded in `/docs/patterns/types/`
+   - See `/docs/features/portfolio/architecture.md` for portfolio type architecture
+   - See `/docs/features/services/architecture.md` for services type architecture
+   - See `/docs/features/blog/architecture.md` for blog type architecture
+
+3. Documentation Memory:
+   - Type templates are stored in `/docs/templates/types/`
+   - Common type patterns are documented
+   - Type system evolution is tracked
+   - See `/docs/features/portfolio/validation.md` for validation patterns
+   - See `/docs/features/services/api.md` for API type usage
+
+## Type System Structure
+
+### Core Type Categories
+
+1. Portfolio Types:
+   ```typescript
+   interface Project {
+     /** Unique identifier for the project */
+     id: string;
+     /** Project title */
+     title: string;
+     /** Brief project description */
+     summary: string;
+     /** Detailed project description in MDX */
+     content: MDXContent;
+     /** Technologies used */
+     technologies: string[];
+     /** Project timeline */
+     timeline: {
+       start: Date;
+       end?: Date;
+     };
+     /** Project outcomes and metrics */
+     outcomes: string[];
+     /** Client information (if public) */
+     client?: {
+       name: string;
+       industry: string;
+       testimonial?: string;
+     };
+   }
+   ```
+
+2. Consulting Service Types:
+   ```typescript
+   interface ConsultingService {
+     /** Service identifier */
+     id: string;
+     /** Service name */
+     name: string;
+     /** Service category (e.g., "Technical Leadership", "Architecture Review") */
+     category: ServiceCategory;
+     /** Service description */
+     description: string;
+     /** Key deliverables */
+     deliverables: string[];
+     /** Typical engagement duration */
+     duration: {
+       min: number;
+       max: number;
+       unit: 'days' | 'weeks' | 'months';
+     };
+     /** Service benefits */
+     benefits: string[];
+   }
+   ```
+
+3. Blog Post Types:
+   ```typescript
+   interface BlogPost {
+     /** Post identifier */
+     id: string;
+     /** Post title */
+     title: string;
+     /** Post summary */
+     summary: string;
+     /** Post content in MDX */
+     content: MDXContent;
+     /** Publication date */
+     publishedAt: Date;
+     /** Last updated date */
+     updatedAt?: Date;
+     /** Post categories */
+     categories: string[];
+     /** Related posts */
+     relatedPosts: string[];
+     /** SEO metadata */
+     seo: {
+       title: string;
+       description: string;
+       keywords: string[];
+     };
+   }
+   ```
+
+## Type Safety Guidelines
+
+1. Strict TypeScript Configuration:
+   ```json
+   {
+     "compilerOptions": {
+       "strict": true,
+       "noImplicitAny": true,
+       "strictNullChecks": true,
+       "strictFunctionTypes": true,
+       "strictBindCallApply": true,
+       "strictPropertyInitialization": true,
+       "noImplicitThis": true,
+       "useUnknownInCatchVariables": true,
+       "alwaysStrict": true
+     }
+   }
+   ```
+
+2. Type Inference Best Practices:
+   ```typescript
+   // Prefer inference when type is clear
+   const service = {
+     id: '1',
+     name: 'CTO Advisory',
+     category: 'Technical Leadership'
+   } as const;
+
+   // Explicit types for complex objects
+   const project: Project = {
+     id: '1',
+     title: 'Enterprise Architecture Modernization',
+     // ...
+   };
+   ```
+
+## Directory Structure
+
+```
+/app/types/
+├── index.ts                # Main type exports
+├── portfolio/
+│   ├── index.ts           # Portfolio type exports
+│   ├── project.ts         # Project types
+│   └── testimonial.ts     # Testimonial types
+├── services/
+│   ├── index.ts           # Services type exports
+│   ├── consulting.ts      # Consulting service types
+│   └── engagement.ts      # Engagement types
+├── blog/
+│   ├── index.ts           # Blog type exports
+│   ├── post.ts            # Blog post types
+│   └── category.ts        # Category types
+├── shared/                # Shared types
+├── ui/                    # UI component types
+└── analytics/             # Analytics types
+```
+
+## Type Documentation Standards
+
+1. JSDoc Requirements:
+   ```typescript
+   /**
+    * Represents a consulting engagement with a client.
+    * Tracks the entire lifecycle of a consulting project.
+    *
+    * @example
+    * ```typescript
+    * const engagement: Engagement = {
+    *   id: 'eng-2024-01',
+    *   client: 'Tech Startup Inc.',
+    *   service: 'CTO Advisory',
+    *   status: 'active'
+    * };
+    * ```
+    */
+   interface Engagement {
+     /** Unique identifier for the engagement */
+     id: string;
+     /** Client company name */
+     client: string;
+     /** Type of consulting service provided */
+     service: string;
+     /** Current status of the engagement */
+     status: 'proposed' | 'active' | 'completed' | 'on-hold';
+   }
+   ```
+
+## Import/Export Guidelines
+
+1. Type Exports:
+   ```typescript
+   // /app/types/index.ts
+   export type { Project } from './portfolio';
+   export type { ConsultingService } from './services';
+   export type { BlogPost } from './blog';
+   ```
+
+2. Type Imports:
+   ```typescript
+   // In components/features
+   import type { Project, ConsultingService, BlogPost } from '@/app/types';
+   ```
+
+## Type Validation
+
+1. Zod Schema Example:
+   ```typescript
+   import { z } from 'zod';
+
+   export const ProjectSchema = z.object({
+     id: z.string().uuid(),
+     title: z.string().min(1).max(100),
+     summary: z.string().min(1).max(300),
+     content: z.any(), // MDX content
+     technologies: z.array(z.string()),
+     timeline: z.object({
+       start: z.date(),
+       end: z.date().optional()
+     }),
+     outcomes: z.array(z.string()),
+     client: z.object({
+       name: z.string(),
+       industry: z.string(),
+       testimonial: z.string().optional()
+     }).optional()
+   });
+
+   export type Project = z.infer<typeof ProjectSchema>;
+   ```
+
+## Working Memory Integration
+
+1. Type Change Documentation:
+   ```markdown
+   ## Type System Impact
+
+   - New types:
+     - `ConsultingEngagement`
+     - `ServiceDeliverable`
+   - Modified:
+     - `Project` (added metrics field)
+   - Breaking: No
+   ```
+
+2. Migration Guide Example:
+   ```markdown
+   ## Type Migration Guide
+
+   ### Adding Metrics to Projects
+
+   1. Update existing projects:
+   ```typescript
+   interface ProjectMetrics {
+     roi?: string;
+     timeframe: string;
+     impact: string;
+   }
+   ```
+
+Remember:
+- Run type checks before commits
+- Document all type changes
+- Keep types organized by feature
+- Follow the established directory structure
+- Use strict TypeScript configuration 
