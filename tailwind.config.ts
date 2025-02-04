@@ -10,9 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-satoshi)", "var(--font-lato)", "sans-serif"],
-        lato: ["var(--font-lato)", "sans-serif"],
-        satoshi: ["var(--font-satoshi)", "sans-serif"],
+        sans: ["var(--font-satoshi)", "system-ui", "sans-serif"],
+        satoshi: ["var(--font-satoshi)", "system-ui", "sans-serif"],
+        lora: ["var(--font-lora)", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

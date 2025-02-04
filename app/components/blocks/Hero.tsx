@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 
 interface HeroProps {
   title?: string;
@@ -12,7 +12,7 @@ interface HeroProps {
 export function Hero({
   title = "Simplifying technology and driving real results",
   subtitle = "Fractional CTO",
-  description = "I'm here to help you navigate the tech world without the hassle — so you can focus on growing your business and making a real impact.",
+  description = "I&apos;m here to help you navigate the tech world without the hassle — so you can focus on growing your business and making a real impact.",
 }: HeroProps) {
   return (
     <section className="relative w-full min-h-[80vh] bg-[#FAF9F7] flex items-center">
@@ -37,7 +37,7 @@ export function Hero({
               variant="default"
               className="bg-[#1C1917] hover:bg-[#292524] text-white px-6 py-2 rounded-full"
             >
-              Let's Talk
+              Let&apos;s Talk
             </Button>
             <Button
               variant="outline"
