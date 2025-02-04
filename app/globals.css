@@ -2,20 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Brand Colors */
+    --sand-light: 45 9% 91%; /* #EAE8E1 */
+    --sand-lighter: 40 20% 97%; /* #F9F7F6 */
+    --black: 300 2% 6%; /* #111011 */
+    --off-white: 40 20% 95%; /* #F4F2EF */
+    --sand-dark: 47 10% 46%; /* #827C6A */
+
+    /* Purple Palette */
+    --purple-light: 285 31% 89%; /* #E5DBEB */
+    --purple-mid: 290 41% 85%; /* #DECAE8 */
+    --purple-dark: 288 14% 57%; /* #987DA5 */
+
+    /* Green Palette */
+    --green-light: 108 35% 85%; /* #D2E8C8 */
+    --green-mid: 108 35% 78%; /* #C1DEAF */
+    --green-dark: 108 29% 46%; /* #6F9954 */
+
+    /* Blue Palette */
+    --blue-light: 210 25% 89%; /* #DCE4EA */
+    --blue-mid: 210 15% 83%; /* #CCD3D9 */
+    --blue-dark: 210 9% 62%; /* #94A1AA */
+
+    /* Orange Palette */
+    --orange-light: 28 82% 90%; /* #FAE4D0 */
+    --orange-dark: 27 43% 54%; /* #C28951 */
+
+    /* Theme Colors */
+    --background: var(--sand-light);
+    --foreground: var(--black);
+    --card: var(--sand-lighter);
+    --card-foreground: var(--black);
+    --popover: var(--sand-lighter);
+    --popover-foreground: var(--black);
+    --primary: var(--sand-dark);
+    --primary-foreground: var(--sand-lighter);
+    --secondary: var(--off-white);
+    --secondary-foreground: var(--sand-dark);
+    --muted: var(--off-white);
+    --muted-foreground: var(--sand-dark);
+    --accent: var(--purple-light);
+    --accent-foreground: var(--purple-dark);
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--sand-lighter);
+    --border: var(--sand-dark);
+    --input: var(--sand-dark);
+    --ring: var(--sand-dark);
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: var(--black);
+    --foreground: var(--sand-lighter);
+    --card: var(--black);
+    --card-foreground: var(--sand-lighter);
+    --popover: var(--black);
+    --popover-foreground: var(--sand-lighter);
+    --primary: var(--sand-lighter);
+    --primary-foreground: var(--black);
+    --secondary: var(--sand-dark);
+    --secondary-foreground: var(--sand-lighter);
+    --muted: var(--sand-dark);
+    --muted-foreground: var(--sand-lighter);
+    --accent: var(--purple-dark);
+    --accent-foreground: var(--purple-light);
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: var(--sand-lighter);
+    --border: var(--sand-dark);
+    --input: var(--sand-dark);
+    --ring: var(--sand-lighter);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
