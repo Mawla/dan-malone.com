@@ -1,3 +1,7 @@
+/* Import fonts */
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -81,6 +85,59 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-satoshi;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-lora;
+  }
+}
+
+@layer components {
+  .heading-1 {
+    @apply font-lora text-[60px] leading-[120%] font-normal;
+  }
+  .heading-2 {
+    @apply font-lora text-[52px] leading-[120%] font-normal;
+  }
+  .heading-3 {
+    @apply font-lora text-[36px] leading-[120%] font-normal;
+  }
+  .heading-4 {
+    @apply font-lora text-[20px] leading-[140%] font-normal;
+  }
+  .title-big {
+    @apply font-satoshi text-[48px] leading-[120%] font-normal;
+  }
+  .title-small {
+    @apply font-satoshi text-[36px] leading-[120%] font-normal;
+  }
+  .metric {
+    @apply font-satoshi text-[48px] leading-[120%] font-normal;
+  }
+  .quote {
+    @apply font-satoshi text-[26px] leading-[120%] font-normal;
+  }
+  .badge {
+    @apply font-satoshi text-[18px] leading-[150%] font-normal;
+  }
+  .menu {
+    @apply font-satoshi text-[16px] leading-[200%] font-normal;
+  }
+  .body-24 {
+    @apply font-satoshi text-[24px] leading-[150%] font-normal;
+  }
+  .body-20 {
+    @apply font-satoshi text-[20px] leading-[150%] font-normal;
+  }
+  .body-18 {
+    @apply font-satoshi text-[18px] leading-[150%] font-normal;
+  }
+  .body-16 {
+    @apply font-satoshi text-[16px] leading-[150%] font-normal;
   }
 }

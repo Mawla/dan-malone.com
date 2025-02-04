@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        lora: ["Lora", "serif"],
+        satoshi: ["Satoshi", "sans-serif"],
+      },
       colors: {
         border: "var(--border)",
         input: "var(--input)",
