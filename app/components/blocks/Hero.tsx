@@ -1,64 +1,79 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "../ui/button";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-interface HeroProps {
-  title?: string;
-  subtitle?: string;
-  description?: string;
+export interface HeroProps {
+  title: string;
+  subtitle: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  className?: string;
 }
 
 export function Hero({
   title = "Simplifying technology and driving real results",
-  subtitle = "Fractional CTO",
-  description = "I&apos;m here to help you navigate the tech world without the hassle — so you can focus on growing your business and making a real impact.",
+  subtitle = "I'm here to help you navigate the tech world without the hassle — so you can focus on growing your business and making a real impact.",
+  imageUrl = "/img/headshot-professional.png",
+  imageAlt = "Dan Malone - Fractional CTO",
+  className,
 }: HeroProps) {
   return (
-    <section className="relative w-full min-h-[80vh] bg-[#FAF9F7] flex items-center">
-      <div className="container mx-auto px-4 py-16 grid lg:grid-cols-2 gap-12 items-center">
-        {/* Left Column - Text Content */}
-        <div className="space-y-6">
-          <div className="inline-flex items-center px-3 py-1 rounded-full border border-gray-200 bg-white/50 backdrop-blur-sm">
-            <span className="flex items-center text-sm text-gray-600">
-              <span className="w-2 h-2 bg-green-400 rounded-full mr-2" />
-              {subtitle}
+    <div className={cn("w-full bg-[#FAF9F7]", className)}>
+      <div className="container mx-auto px-6 py-16 md:py-24">
+        <div className="flex flex-col max-w-[1200px] mx-auto">
+          {/* Badge */}
+          <div className="mb-8">
+            <span className="inline-flex items-center text-sm text-gray-600">
+              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2" />
+              Fractional CTO
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
-            {title}
-          </h1>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Column - Text Content */}
+            <div className="flex flex-col space-y-6">
+              <h1 className="font-serif text-[2.75rem]/[1.2] md:text-[3.5rem]/[1.2] font-medium text-gray-900">
+                {title}
+              </h1>
 
-          <p className="text-gray-600 text-lg max-w-xl">{description}</p>
+              <p className="text-gray-600 text-lg/relaxed">
+                {subtitle}
+              </p>
 
-          <div className="flex flex-wrap gap-4">
-            <Button
-              variant="default"
-              className="bg-[#1C1917] hover:bg-[#292524] text-white px-6 py-2 rounded-full"
-            >
-              Let&apos;s Talk
-            </Button>
-            <Button
-              variant="outline"
-              className="border-gray-200 hover:bg-gray-50 px-6 py-2 rounded-full"
-            >
-              Review My Work
-            </Button>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button
+                  asChild
+                  className="rounded-full bg-black hover:bg-gray-800 text-white px-8 h-12"
+                >
+                  <Link href="/contact">Let's Talk</Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="rounded-full border-gray-200 hover:bg-gray-50 px-8 h-12"
+                >
+                  <Link href="/portfolio">Review My Work</Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl">
+              <Image
+                src={imageUrl}
+                alt={imageAlt}
+                fill
+                className="object-cover object-center"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
-
-        {/* Right Column - Image */}
-        <div className="relative h-[500px] w-full">
-          <Image
-            src="/hero-image.jpg"
-            alt="Dan Malone - Fractional CTO"
-            fill
-            className="object-cover rounded-2xl"
-            priority
-          />
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -60,6 +60,9 @@ export async function getPageContent(pagePath: string): Promise<PageContent> {
   const { data, content } = matter(fileContent);
 
   const metadata: Metadata = {
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_BASE_URL || "https://dan-malone.com"
+    ),
     title: data.title,
     description: data.description,
     keywords: data.keywords,

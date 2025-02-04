@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { getMetadata } from "@/lib/metadata";
+import { satoshi, lora } from "@/config/fonts";
+
+// Import global styles last
 import "./globals.css";
-import { satoshi, lora } from "@/app/config/fonts";
 
 // Get base metadata from home page
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -19,8 +21,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${satoshi.variable} ${lora.variable}`}
     >
-      <body className="font-sans min-h-screen bg-background text-foreground antialiased">
-        <main className="relative flex min-h-screen flex-col">{children}</main>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body className="font-sans min-h-screen text-foreground antialiased">
+        <main className="relative flex min-h-screen flex-col">
+          <div className="flex-1">{children}</div>
+        </main>
       </body>
     </html>
   );

@@ -1,8 +1,4 @@
----
-description: Typescript rules
-globs: *.tsx
----
- # dan-malone.com TypeScript Rules
+# dan-malone.com TypeScript Rules
 
 ## Memory Management
 
