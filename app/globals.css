@@ -6,84 +6,28 @@
 @layer base {
   :root {
     /* Brand Colors */
-    --sand-light: 45 9% 91%; /* #EAE8E1 */
-    --sand-lighter: 40 20% 97%; /* #F9F7F6 */
-    --black: 300 2% 6%; /* #111011 */
-    --off-white: 40 20% 95%; /* #F4F2EF */
-    --sand-dark: 47 10% 46%; /* #827C6A */
-
-    /* Purple Palette */
-    --purple-light: 285 31% 89%; /* #E5DBEB */
-    --purple-mid: 290 41% 85%; /* #DECAE8 */
-    --purple-dark: 288 14% 57%; /* #987DA5 */
-
-    /* Green Palette */
-    --green-light: 108 35% 85%; /* #D2E8C8 */
-    --green-mid: 108 35% 78%; /* #C1DEAF */
-    --green-dark: 108 29% 46%; /* #6F9954 */
-
-    /* Blue Palette */
-    --blue-light: 210 25% 89%; /* #DCE4EA */
-    --blue-mid: 210 15% 83%; /* #CCD3D9 */
-    --blue-dark: 210 9% 62%; /* #94A1AA */
-
-    /* Orange Palette */
-    --orange-light: 28 82% 90%; /* #FAE4D0 */
-    --orange-dark: 27 43% 54%; /* #C28951 */
+    --background: #faf9f7;
+    --foreground: #1c1917;
+    --primary: #1c1917;
+    --primary-foreground: #ffffff;
+    --secondary: #e9f5ee;
+    --secondary-foreground: #1c1917;
+    --accent: #a9e8c2;
+    --accent-foreground: #1c1917;
+    --muted: #d1e9db;
+    --muted-foreground: #1c1917;
+    --border: #e6e6e6;
 
     /* Theme Colors */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-  }
-
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --card: #ffffff;
+    --card-foreground: #1c1917;
+    --popover: #ffffff;
+    --popover-foreground: #1c1917;
+    --destructive: #ff0000;
+    --destructive-foreground: #ffffff;
+    --input: #e6e6e6;
+    --ring: #1c1917;
+    --radius: 1rem;
   }
 }
 
@@ -103,7 +47,7 @@
   h5,
   h6 {
     font-family: var(--font-lora);
-    @apply font-medium;
+    @apply font-medium tracking-tight;
   }
 }
 
@@ -111,70 +55,73 @@
 @layer components {
   /* Headings */
   .heading-1 {
-    font-family: var(--font-lora);
-    @apply text-[60px] leading-[120%] tracking-[-0.04em] text-[#111011] font-medium;
+    @apply font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-[#1C1917];
   }
   .heading-2 {
-    font-family: var(--font-lora);
-    @apply text-[52px] leading-[120%] tracking-[-0.04em] text-[#111011] font-medium;
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-[#1C1917];
   }
   .heading-3 {
-    font-family: var(--font-lora);
-    @apply text-[36px] leading-[120%] tracking-[-0.02em] text-[#111011] font-medium;
+    @apply font-serif text-2xl md:text-3xl lg:text-4xl leading-[1.2] tracking-tight text-[#1C1917];
   }
   .heading-4 {
-    font-family: var(--font-satoshi);
-    @apply text-[20px] leading-[140%] font-bold text-[#333333];
+    @apply font-serif text-xl md:text-2xl lg:text-3xl leading-[1.2] tracking-tight text-[#1C1917];
   }
-
-  /* Titles */
-  .title-big {
-    font-family: var(--font-satoshi);
-    @apply text-[48px] leading-[120%] tracking-[-0.02em] text-[#111011];
+  .heading-5 {
+    @apply font-serif text-lg md:text-xl lg:text-2xl leading-[1.3] tracking-tight text-[#1C1917];
   }
-  .title-small {
-    font-family: var(--font-satoshi);
-    @apply text-[36px] leading-[120%] tracking-[-0.02em] text-[#111011];
+  .heading-card {
+    @apply font-serif text-xl font-medium leading-snug tracking-tight text-[#1C1917];
   }
-
-  /* Other Text Styles */
-  .metric {
-    font-family: var(--font-satoshi);
-    @apply text-[48px] leading-[120%] tracking-[0] text-[#111011];
-  }
-  .quote {
-    font-family: var(--font-satoshi);
-    @apply text-[26px] leading-[120%] tracking-[-0.02em] font-medium text-[#111011];
-  }
-  .badge {
-    font-family: var(--font-satoshi);
-    @apply text-[18px] leading-[150%] tracking-[0.16em] uppercase text-[#333333];
-  }
-  .menu {
-    font-family: var(--font-satoshi);
-    @apply text-[16px] leading-[200%] font-medium text-[#333333];
+  .heading-card-small {
+    @apply font-serif text-lg font-medium leading-snug tracking-tight text-[#1C1917];
   }
 
   /* Body Text */
-  .body-24 {
-    font-family: var(--font-satoshi);
-    @apply text-[24px] leading-[150%] text-[#111011];
+  .body-large {
+    @apply text-lg md:text-xl leading-relaxed text-[#1C1917]/70;
   }
-  .body-20 {
-    font-family: var(--font-satoshi);
-    @apply text-[20px] leading-[150%] tracking-[-0.02em] text-[#111011];
+  .body-base {
+    @apply text-base leading-relaxed text-[#1C1917]/70;
   }
-  .body-18 {
-    font-family: var(--font-satoshi);
-    @apply text-[18px] leading-[150%] text-[#111011];
+  .body-small {
+    @apply text-sm leading-relaxed text-[#1C1917]/70;
   }
-  .body-16 {
-    font-family: var(--font-satoshi);
-    @apply text-[16px] leading-[24px] text-[#111011];
+  .body-xs {
+    @apply text-xs leading-relaxed text-[#1C1917]/70;
   }
 
-  /* Manual CSS Test */
-  .test-red {
-    background: red !important;
+  /* Card Text */
+  .card-title {
+    @apply text-lg font-medium leading-snug text-[#1C1917];
+  }
+  .card-body {
+    @apply text-base leading-relaxed text-[#1C1917]/70;
+  }
+  .card-body-small {
+    @apply text-sm leading-relaxed text-[#1C1917]/60;
+  }
+
+  /* Feature Text */
+  .feature-title {
+    @apply text-base font-medium leading-snug text-[#1C1917];
+  }
+  .feature-description {
+    @apply text-sm leading-relaxed text-[#1C1917]/70;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply rounded-full bg-[#1C1917] hover:bg-[#1C1917]/90 text-white px-8 py-6 h-auto text-base font-medium transition-colors;
+  }
+  .btn-secondary {
+    @apply rounded-full border border-[#1C1917]/10 hover:bg-[#1C1917]/5 text-[#1C1917] px-8 py-6 h-auto text-base font-medium transition-colors;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-4 py-1.5 bg-[#E9F5EE] border border-[#D1E9DB] rounded-full text-sm font-medium text-[#1C1917];
+  }
+  .badge-dot {
+    @apply w-2 h-2 bg-[#A9E8C2] rounded-full mr-2;
   }
 }
