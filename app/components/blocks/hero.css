@@ -1,0 +1,71 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      calc(-100% - 1.5rem)
+    ); /* 1.5rem matches the gap-6 in the flex container */
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes rotate-glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.glow-button {
+  position: relative;
+  background: rgb(30, 21, 21);
+  border-radius: 118px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(234, 232, 225, 0.9) 40%,
+    rgba(234, 232, 225, 1) 45%,
+    rgba(234, 232, 225, 0.9) 50%,
+    transparent 55%,
+    transparent 100%
+  );
+  animation: rotate-glow 2s linear infinite;
+  z-index: -2;
+}
+
+.glow-button::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: rgb(30, 21, 21);
+  border-radius: 116px;
+  z-index: -1;
+}
+
+.glow-button > * {
+  z-index: 1;
+  position: relative;
+}

@@ -50,7 +50,7 @@ export function Hero({
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <Button
                   asChild
-                  className="h-12 px-6 rounded-full bg-[#1C1917] hover:bg-[#1C1917]/90 text-white text-base font-medium"
+                  className="glow-button h-12 px-8 text-white text-base font-medium"
                 >
                   <Link href="/contact">Let's Talk</Link>
                 </Button>
